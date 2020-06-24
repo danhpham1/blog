@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/admin/style.css">
+    <script src="/ckeditor/ckeditor.js"></script>
+    <title>Admin Page</title>
+</head>
+
+<body>
+    <div class="header">
+        <nav class="navbar navbar-light bg-secondary">
+            <a href="/admin/index" class="navbar-brand"><b>Admin Page</b></a>
+            <!-- <div class="">
+                <p class="mb-1 font-weight-bold d-inline">Xin chào</p>
+                <a href="#" class="btn btn-danger d-inline text-center">Sign Out</a>
+            </div> -->
+            <div class="float-right">
+                <h3 class="d-inline pb-1"><%=username%></h3>
+                <a href="/admin/logout" class="btn btn-primary mb-2">Sign Out</a>
+            </div>
+
+        </nav>
+    </div>
+
+
+    <!-- menu -->
+    <div class="menu bg-light mt-2">
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a href="/admin/index" class="nav-link active ">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/title" class="nav-link active ">Title</a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/posts" class="nav-link active ">Blog Posts</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <!-- main -->
+
+    <div class="container-fluid main mt-4">
+        <%-include(main)%>
+    </div>
+
+    <script>
+        CKEDITOR.replace('content', {
+            // removePlugins: 'easyimage',
+            filebrowserBrowseUrl: '../../ckeditor/browser',
+            // filebrowserUploadUrl: '/uploader'
+        });
+    </script>
+</body>
+
+</html>

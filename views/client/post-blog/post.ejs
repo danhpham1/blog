@@ -1,0 +1,73 @@
+<section class="post-main mt-2">
+  <div class="container">
+    <div class="post">
+      <div class="post-main-left">
+        <p class="text-lg font-weight-bold">
+          <%= post.title %>
+        </p>
+        <span class="text-dark"><%= post.nameTitle %></span>
+        <p class="d-inline float-right">
+          <i class="fa fa-eye"></i>
+          <span class="text-center"><%= post.views %></span>
+        </p>
+
+        <div class="content">
+          <%- post.content %>
+        </div>
+      </div>
+
+      <div class="post-main-right">
+        <div class="post-postion-right">
+          <div class="title">
+            <span class="text-md bg-dark" style="width: 260px;"
+              >Related Post</span
+            >
+            <hr />
+          </div>
+
+          <% postsTitleFilter.forEach((el,index) => { %> <% if(index ==
+          postsTitleFilter.length - 1){ %>
+          <div class="card" style="max-width: 350px;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img
+                  src="/img/logo/<%= el.logo %> "
+                  class="card-img"
+                  alt="..."
+                />
+              </div>
+              <div class="col-md-8">
+                <div class="card-title">
+                  <a href="/post/<%= el._id %> " class="card-text">
+                    <%= el.title %>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% } else{ %>
+          <div class="card" style="max-width: 350px;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img
+                  src="/img/logo/<%= el.logo %> "
+                  class="card-img"
+                  alt="..."
+                />
+              </div>
+              <div class="col-md-8">
+                <div class="card-title">
+                  <a href="/post/<%= el._id %> " class="card-text">
+                    <%= el.title %>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <% } %> <% }); %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

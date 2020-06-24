@@ -1,0 +1,23 @@
+<header class="header" id="myHeader">
+    <nav class="navbar navbar-secondary bg-secondary">
+        <a href="/" class="navbar-brand">
+            Noob Boy Blogger
+        </a>
+
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </nav>
+</header>
+
+<section class="category bg-light">
+    <ul class="nav justify-content-center">
+
+        <% allTitle.forEach(el => { %>
+        <li class="nav-item">
+            <a href="/category/<%= el.name %>" class="nav-link active"><b><%= el.name %> </b></a>
+        </li>
+        <% }); %>
+    </ul>
+</section>

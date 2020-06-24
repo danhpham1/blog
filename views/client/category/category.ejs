@@ -1,0 +1,164 @@
+<section class="main-category mt-2">
+  <div class="main-category-left">
+    <div class="title">
+      <span class="text-md bg-dark">Blogs</span>
+      <hr />
+    </div>
+
+    <div class="main-category-left-items">
+      <% postsRandom.forEach((el,index) => { %>
+      <div class="card" style="width: 9rem;">
+        <img src="/img/logo/<%= el.logo %>" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <a href="/post/<%= el._id %>">
+            <p class="card-text">
+              <%= el.title %>
+            </p>
+          </a>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+  </div>
+
+  <div class="main-category-center">
+    <div>
+      <p class="text-lg">
+        Category:<span class="text-lg text-up text-color-pink"
+          ><%=title.toUpperCase()%></span
+        >
+      </p>
+    </div>
+
+    <div class="main-category-center-items">
+      <% allPostsTitle.forEach((el,index) => { %> <% if(allPostsTitle.length - 1
+      == index){ %>
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="/img/logo/<%= el.logo %> " class="card-img" alt="..." />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <a href="/post/<%= el._id %>">
+                <h5 class="card-title text-color-pink text-md">
+                  <%= el.title %>
+                </h5>
+                <p class="card-text text-left">
+                  <%= el.contentSub %>...
+                </p>
+                <p class="card-text text-left text-dark">
+                  by
+                  <span style="color: black;">Noob Boy</span>
+                  &ensp;&ensp;&ensp;|&ensp;&ensp;&ensp; <%= el.date %>
+                </p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% }else{ %>
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="/img/logo/<%= el.logo %> " class="card-img" alt="..." />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <a href="/post/<%= el._id %>">
+                <h5 class="card-title text-color-pink text-md">
+                  <%= el.title %>
+                </h5>
+                <p class="card-text text-left">
+                  <%= el.contentSub %>...
+                </p>
+                <p class="card-text text-left text-dark">
+                  by
+                  <span style="color: black;">Noob Boy</span>
+                  &ensp;&ensp;&ensp;|&ensp;&ensp;&ensp; <%= el.date %>
+                </p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <% } %> <% }); %>
+
+      <nav aria-label="Page navigation example mt-3">
+        <ul class="pagination justify-content-center">
+          <ul class="pagination justify-content-center">
+            <li class="page-item">
+              <a class="page-link" href="?page=1">
+                First Page
+              </a>
+            </li>
+            <% if(currentPage > 1) { %>
+            <li class="page-item">
+              <a class="page-link" href="?page=<%=+currentPage - 1%>">
+                <i class="fa fa-angle-double-left"></i>
+              </a>
+            </li>
+            <% }%> <% for(let i = 1 ; i <= allPage ; i++) { %>
+            <li class="page-item">
+              <a class="page-link" href="/?page=<%=i%>"><%= i %></a>
+            </li>
+            <% } %> <% if(currentPage < allPage) { %>
+            <li class="page-item">
+              <a class="page-link" href="?page=<%=+currentPage + 1%>">
+                <i class="fa fa-angle-double-right"></i>
+              </a>
+            </li>
+            <% }%>
+            <li class="page-item">
+              <a class="page-link" href="?page=<%=allPage%>">Last Page</a>
+            </li>
+          </ul>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="main-category-right">
+    <div class="title">
+      <span class="text-md bg-dark" style="width: 200px;">Most Read</span>
+      <hr />
+    </div>
+
+    <div class="main-category-right-items">
+      <% postsMostView.forEach((el,index) => { %> <% if(postsMostView.length - 1
+      == index){ %>
+      <div class="card" style="max-width: 540px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="/img/logo/<%= el.logo %> " class="card-img" alt="..." />
+          </div>
+          <div class="col-md-8">
+            <div class="card-title">
+              <a href="/post/<%= el._id %> " class="card-text">
+                <%= el.title %>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% }else{ %>
+      <div class="card" style="max-width: 540px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="/img/logo/<%= el.logo %> " class="card-img" alt="..." />
+          </div>
+          <div class="col-md-8">
+            <div class="card-title">
+              <a href="/post/<%= el._id %> " class="card-text">
+                <%= el.title %>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <% } %> <% }); %>
+    </div>
+  </div>
+</section>

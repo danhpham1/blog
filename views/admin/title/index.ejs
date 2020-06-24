@@ -1,0 +1,33 @@
+<div class="row justify-content-center">
+    <h4 class="">Title</h4>
+</div>
+<div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-12">
+        <a href="/admin/title/add" class="btn btn-lg btn-primary">Add Title</a>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Name</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% listTitle.forEach((element,index) => { %>
+                <tr>
+                  <th scope="row"><%=index + 1%></th>
+                  <td><%=element.name%></td>
+                  <td>
+                      <a href="/admin/title/edit/<%=element._id%>"><button class="btn btn-success ">Edit</button></a>
+                      <form action="/admin/title/delete/<%=element._id%>" method="POST" class="d-inline">
+                        <a href=""><button class="btn btn-danger">Delete</button></a>
+                      </form>
+                  </td>
+                </tr>
+              <% }); %>
+            </tbody>
+          </table>
+    </div>
+</div>

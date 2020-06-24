@@ -1,0 +1,97 @@
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <h4 class="text-center">Posts</h4>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-4 col-md-4 col-sm-12">
+        <a href="/admin/post/add" class="btn btn-primary">Add Post</a>
+        <a href="/admin/post/sort" class="btn btn-success">Sort Post</a>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 ">
+        <form action="/admin/post/search" method="POST" class="form-inline d-flex justify-content-end">
+            <input required type="text" class="form-control d-inline" name="keyword" id="keyword"
+                placeholder="Name Title">
+            <button class="btn btn-outline-secondary float-left ml-1" type="submit" id="button-addon2">Search</button>
+        </form>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <p>ID</p>
+                    </th>
+                    <th scope="col">
+                        <p>Titile</p>
+                    </th>
+                    <th scope="col">
+                        <p>Logo</p>
+                    </th>
+                    <th scope="col">
+                        <p>Title Of Post</p>
+                    </th>
+                    <th scope="col">
+                        <p>Date</p>
+                    </th>
+                    <th scope="col">
+                        <p>Views</p>
+                    </th>
+                    <th scope="col">
+                        <p>Content</p>
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% listPosts.forEach((el,index) => { %>
+                <tr>
+                    <% start += 1 %>
+                    <th scope="row"><%=start%></th>
+                    <td>
+                        <p><%=el.title%></p>
+                    </td>
+                    <td><img style="width: 50px; height: 50px;" src="/img/logo/<%=el.logo%>" alt=""></td>
+                    <td><%=el.nameTitle%></td>
+                    <td><%=el.date%></td>
+                    <td><%=el.views%></td>
+                    <td>
+                        <p><%=el.contentSub%></p>
+                    </td>
+                    <td>
+                        <a href="/admin/post/edit/<%=el._id%>" class="btn btn-success">Edit</a>
+                        <form action="/admin/post/delete/<%=el._id%>" class="mt-1" method="POST">
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <% if(currentPage > 1){ %>
+                <li class="page-item"><a class="page-link" href="/admin/posts?page=<%=+currentPage - 1%>">Previous</a>
+                </li>
+                <% } %>
+
+                <% for(let i = 0; i < totalPage; i++){ %>
+                <li class="page-item"><a class="page-link" href="/admin/posts?page=<%=i+1%>"><%=i+1%></a></li>
+                <% } %>
+
+                <% if(currentPage < totalPage){ %>
+                <li class="page-item"><a class="page-link" href="/admin/posts?page=<%=+currentPage + 1%>">Next</a>
+                </li>
+                <% } %>
+
+            </ul>
+        </nav>
+    </div>
+</div>

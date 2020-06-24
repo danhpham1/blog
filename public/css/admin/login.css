@@ -1,0 +1,21 @@
+body{
+    
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid{
+    background: url('../../img/bg.jpg') no-repeat center center/cover;
+    height: 100vh;
+    padding-top: 30vh;
+}
+
+.container-fluid h2{
+    font-weight: 700;
+    font-size: 40px;
+}
+
+.container-fluid label{
+    font-weight: 400;
+    font-size: 20px;
+}

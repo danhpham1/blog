@@ -1,0 +1,394 @@
+<section class="carousel bg-light">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container-carousel">
+                    <div>
+                        <a href="/post/<%=postsRandom[0]._id%>">
+                            <img src="img/logo/<%=postsRandom[0].logo%>" class="" alt="...">
+                            <p class="text-md"><%=postsRandom[0].title%></p>
+                        </a>
+                    </div>
+
+                    <div>
+                        <a href="/post/<%=postsRandom[1]._id%>">
+                            <img src="img/logo/<%=postsRandom[1].logo%>" class="" alt="...">
+                            <p class="text-md"><%=postsRandom[1].title%></p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container-carousel">
+                    <div>
+                        <a href="/post/<%=postsRandom[2]._id%>">
+                            <img src="img/logo/<%=postsRandom[2].logo%>" class="" alt="...">
+                            <p class="text-md"><%=postsRandom[2].title%></p>
+                        </a>
+                    </div>
+
+                    <div>
+                        <a href="/post/<%=postsRandom[3]._id%>">
+                            <img src="img/logo/<%=postsRandom[3].logo%>" class="" alt="...">
+                            <p class="text-md"><%=postsRandom[3].title%></p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container-carousel">
+                    <div>
+                        <a href="/post/<%=postsRandom[4]._id%>">
+                            <img src="img/logo/<%=postsRandom[4].logo%>" class="" alt="...">
+                            <p class="text-md"><%=postsRandom[4].title%></p>
+                        </a>
+                    </div>
+
+                    <div>
+                        <a href="/post/<%=postsRandom[5]._id%>">
+                            <img src="img/logo/<%=postsRandom[5].logo%>" class="" alt="...">
+                            <p class="text-md"><%=postsRandom[5].title%></p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</section>
+
+<section class="container-title">
+    <div class="container">
+        <div class="container-items">
+            <div class="container-title-left">
+                <div class="title">
+                    <span class="text-md ">Javascript</span>
+                    <hr>
+                </div>
+
+                <div class="container-title-items">
+                    <div class="container-title-items-left">
+                        <img src="img/logo/<%=postJavscript[0].logo%>" alt="" style="height: 200px;">
+                        <a href="/post/<%=postJavscript[0]._id%>">
+                            <p class="text-md"><%=postJavscript[0].title%></p>
+                        </a>
+                        <p class="text-dark">By <span><b>Noob Boy</b></span></p>
+                        <p class="text-dark">
+                            <%=postJavscript[0].contentSub.substr(0,200)%>...
+                        </p>
+                    </div>
+                    <div class="container-title-items-right">
+                        <div class="item">
+                            <img src="img/logo/<%=postJavscript[1].logo%>" alt="">
+                            <a href="/post/<%=postJavscript[1]._id%>">
+                                <span class="">
+                                    <%=postJavscript[1].title%>
+                                </span>
+                            </a>
+                        </div>
+                        <hr>
+                        <div class="item">
+                            <img src="img/logo/<%=postJavscript[2].logo%>" alt="">
+                            <a href="/post/<%=postJavscript[2]._id%>">
+                                <span class="">
+                                    <%=postJavscript[2].title%>
+                                </span>
+                            </a>
+                        </div>
+                        <hr>
+                        <div class="item">
+                            <img src="img/logo/<%=postJavscript[3].logo%>" alt="">
+                            <a href="/post/<%=postJavscript[3]._id%>">
+                                <span class="">
+                                    <%=postJavscript[3].title%>
+                                </span>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-title-right">
+                <div class="title">
+                    <span class="text-md ">Nodejs</span>
+                    <hr>
+                </div>
+
+                <div class="container-title-items">
+                    <div class="container-title-items-left">
+                        <img src="img/logo/<%=postNodejs[0].logo%>" alt="" style="height: 200px;">
+                        <a href="/post/<%=postNodejs[0]._id%>">
+                            <p class="text-md"><%=postNodejs[0].title%></p>
+                        </a>
+                        <p class="text-dark">By <span><b>Noob Boy</b></span></p>
+                        <p class="text-dark">
+                            <%=postNodejs[0].contentSub.substr(0,200)%>...
+                        </p>
+                    </div>
+                    <div class="container-title-items-right">
+                        <div class="item">
+                            <img src="img/logo/<%=postNodejs[1].logo%>" alt="">
+                            <a href="/post/<%=postNodejs[1]._id%>">
+                                <span class="">
+                                    <%=postNodejs[1].title%>
+                                </span>
+                            </a>
+                        </div>
+                        <hr>
+                        <div class="item">
+                            <img src="img/logo/<%=postNodejs[2].logo%>" alt="">
+                            <a href="/post/<%=postNodejs[2]._id%>">
+                                <span class="">
+                                    <%=postNodejs[2].title%>
+                                </span>
+                            </a>
+                        </div>
+                        <hr>
+                        <div class="item">
+                            <img src="img/logo/<%=postNodejs[3].logo%>" alt="">
+                            <a href="/post/<%=postNodejs[3]._id%>">
+                                <span class="">
+                                    <%=postNodejs[3].title%>
+                                </span>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="main-blog">
+    <div class="main-left">
+        <div class="title">
+            <span class="text-md bg-dark">HTML</span>
+            <hr>
+        </div>
+
+        <div class="card" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="img/logo/<%= postHTML[0].logo %> " class="card-img" alt="..."
+                        style="width: 100%;height: auto;">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-title">
+                        <a href="/post/<%= postHTML[0]._id %>" class="card-text">
+                            <%= postHTML[0].title %>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="card" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="img/logo/<%= postHTML[1].logo %>" class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-title">
+                        <a href="/post/<%= postHTML[1]._id %>" class="card-text">
+                            <%= postHTML[1].title %>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="card" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="img/logo/<%= postHTML[2].logo %>" class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-title">
+                        <a href="/post/<%= postHTML[2]._id %>" class="card-text">
+                            <%= postHTML[2].title %>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="card" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="img/logo/<%= postHTML[3].logo %>" class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-title">
+                        <a href="/post/<%= postHTML[3]._id %>" class="card-text">
+                            <%= postHTML[3].title %>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="title">
+            <span class="text-md bg-dark " style="width:110px">Last Post</span>
+            <hr>
+        </div>
+
+        <% allPosts.forEach((el,index) => { %>
+
+        <% if((allPosts.length - 1) == index){ %>
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="img/logo/<%= el.logo %> " class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <a href="/post/<%= el._id %>">
+                            <h5 class="card-title"><%= el.title %></h5>
+                            <p class="card-text">
+                                <%= el.contentSub.substr(0,200) %>...
+                            </p>
+                            <p class="card-text"><small class="text-muted">Day:<%= el.date %></small></p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } else{ %>
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="img/logo/<%= el.logo %> " class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <a href="/post/<%= el._id %>">
+                            <h5 class="card-title"><%= el.title %></h5>
+                            <p class="card-text">
+                                <%= el.contentSub.substr(0,200) %>...
+                            </p>
+                            <p class="card-text"><small class="text-muted">Day:<%= el.date %></small></p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <% } %>
+
+        <% }); %>
+
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="?page=1">
+                        First Page
+                    </a>
+                </li>
+                <% if(currentPage > 1) { %>
+                <li class="page-item">
+                    <a class="page-link" href="?page=<%=+currentPage - 1%>">
+                        <i class="fa fa-angle-double-left"></i>
+                    </a>
+                </li>
+                <% }%>
+
+                <% for(let i = 1 ; i <= allPage ; i++) { %>
+                <li class="page-item"><a class="page-link" href="/?page=<%=i%>"><%= i %></a></li>
+                <% } %>
+
+                <% if(currentPage < allPage) { %>
+                <li class="page-item">
+                    <a class="page-link" href="?page=<%=+currentPage + 1%>">
+                        <i class="fa fa-angle-double-right"></i>
+                    </a>
+                </li>
+                <% }%>
+                <li class="page-item"><a class="page-link" href="?page=<%=allPage%>">Last Page</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main-right">
+        <div class="title">
+            <span class="text-md bg-dark ">CSS</span>
+            <hr>
+        </div>
+
+        <div class="card" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="img/logo/<%= postCSS[0].logo %> " class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-title">
+                        <a href="/post/<%= postCSS[0]._id %>" class="card-text">
+                            <%= postCSS[0].title %>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="card" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="img/logo/<%= postCSS[1].logo %>" class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-title">
+                        <a href="/post/<%= postCSS[1]._id %>" class="card-text">
+                            <%= postCSS[1].title %>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="card" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="img/logo/<%= postCSS[2].logo %>" class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-title">
+                        <a href="/post/<%= postCSS[2]._id %>" class="card-text">
+                            <%= postCSS[2].title %>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="card" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="img/logo/<%= postCSS[3].logo %>" class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-title">
+                        <a href="/post/<%= postCSS[3]._id %>" class="card-text">
+                            <%= postCSS[3].title %>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

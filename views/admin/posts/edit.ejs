@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <h4 class="text-center">Edit Post</h4>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <form action="/admin/post/process-edit" method="POST" enctype="multipart/form-data">
+            <div class="form-row">
+                <div class="form-group col-lg-6">
+                    <label for="title">Title</label>
+                    <input class="form-control" type="text" required id="title" name="title" value="<%=post.title%>">
+                </div>
+                <input type="hidden" name="logo" value="<%=post.logo%>">
+                <input type="hidden" name="id" value=<%=post._id%>>
+                <input type="hidden" name="views" value="<%=post.views%>">
+                <input type="hidden" name="date" value="<%=post.date%>">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-lg-6">
+                    <label for="nametitle">Choose title of post</label>
+                    <select name="nametitle" id="nametitle" class="custom-select">
+                        <% listTitle.forEach(el => { %>
+                            <% if(el.name == post.nameTitle){ %>
+                                <option value=<%=el._id%> selected="selected"><%=el.name%></option>
+                            <% }else{ %>
+                                <option value=<%=el._id%>><%=el.name%></option>
+                            <% } %> 
+                        <% }); %>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-lg-12 col-md-12">
+                    <label for="contentsub">Content Sub</label><br>
+                    <textarea name="contentsub" id="contentsub" cols="120" rows="5"><%=post.contentSub%></textarea>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-lg-12 col-md-12">
+                    <label for="content">Content</label>
+                    <textarea rows="1000" cols="100" name="content" id="content" ><%= post.content %></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Edit</button>
+        </form>
+          <a href="/admin/posts" class="btn btn-success mt-3">Back</a>
+    </div>
+</div>
