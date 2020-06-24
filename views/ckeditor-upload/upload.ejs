@@ -1,43 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
-        function getUrlParam(paramName) {
-            var reParam = new RegExp('(?:[\?&]|&)' + paramName + '=([^&]+)', 'i');
-            var match = window.location.search.match(reParam);
+      function getUrlParam(paramName) {
+        var reParam = new RegExp("(?:[\?&]|&)" + paramName + "=([^&]+)", "i");
+        var match = window.location.search.match(reParam);
 
-            return (match && match.length > 1) ? match[1] : null;
-        }
-        // Simulate user action of selecting a file to be returned to CKEditor.
-        function returnFileUrl(fileurl) {
-
-            var funcNum = getUrlParam('CKEditorFuncNum');
-            var fileUrl = fileurl;
-            window.opener.CKEDITOR.tools.callFunction(funcNum, fileUrl);
-            window.close();
-        }
+        return match && match.length > 1 ? match[1] : null;
+      }
+      // Simulate user action of selecting a file to be returned to CKEditor.
+      function returnFileUrl(fileurl) {
+        var funcNum = getUrlParam("CKEditorFuncNum");
+        var fileUrl = fileurl;
+        window.opener.CKEDITOR.tools.callFunction(funcNum, fileUrl);
+        window.close();
+      }
     </script>
     <title>Upload IMG</title>
-</head>
+  </head>
 
-<body>
+  <body>
+    <form
+      action="/admin/ckeditor/upload"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      Choose File:<input type="file" name="uploadfile" />
+      <button>Upload</button>
+    </form>
+    <% if(image){ %> <% image.forEach(element => { %>
+    <button onclick="returnFileUrl('/img/post-img/<%=element%>')">
+      <img
+        src="/img/post-img/<%=element%>"
+        alt=""
+        width="200px"
+        height="200px"
+      />
+    </button>
 
-    <% if(image){ %>
-    <% image.forEach(element => { %>
-    <button onclick="returnFileUrl('/img/post-img/<%=element%>')"><img src="/img/post-img/<%=element%>" alt=""
-            width="200px" height="200px"></button>
-    <button><a href="/ckeditor/delete?filename=<%=element%>">Delete IMG</a></button>
-    <% }); %>
-    <% } else{ %>
+    <button>
+      <a href="/admin/ckeditor/delete?filename=<%=element%>">Delete IMG</a>
+    </button>
+    <% }); %> <% } else{ %>
     <p>No image</p>
     <% } %>
-    <form action="/ckeditor/upload" method="POST" enctype="multipart/form-data">
-        Choose File:<input type="file" name="uploadfile">
-        <button>Upload</button>
-    </form>
-</body>
-
+  </body>
 </html>
