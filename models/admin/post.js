@@ -16,14 +16,21 @@ var postModel = mongoose.model("post", postSchema);
 module.exports = {
   postModel: postModel,
 
-  getAllPosts: function () {
-    return postModel.find();
-  },
-
   savePost: function (post) {
     return post.save();
   },
 
+  getAllPosts: function () {
+    return postModel.find();
+  },
+
+  getPostNews: function (count) {
+    return postModel.aggregate([
+      { $sort: { date: -1 } },
+      { $project: { _id: 1, logo: 1, title: 1, date: 1, views: 1 } },
+      { $limit: count },
+    ]);
+  },
   getPostById: function (id) {
     return postModel.findById(id);
   },
@@ -37,15 +44,34 @@ module.exports = {
   getAllPostsTitle: function (title) {
     return postModel.aggregate([
       { $match: { nameTitle: `${title}` } },
-      { $project: { _id: 1, title: 1, contentSub: 1, logo: 1, date: 1 } },
+      {
+        $project: {
+          _id: 1,
+          title: 1,
+          contentSub: 1,
+          logo: 1,
+          date: 1,
+          views: 1,
+        },
+      },
     ]);
   },
 
-  getPostTitle: function (title) {
+  getPostTitle: function (title, count) {
     return postModel.aggregate([
       { $match: { nameTitle: `${title}` } },
-      { $project: { _id: 1, title: 1, contentSub: 1, logo: 1 } },
-      { $sample: { size: 4 } },
+      { $sort: { date: -1 } },
+      {
+        $project: {
+          _id: 1,
+          title: 1,
+          date: 1,
+          views: 1,
+          logo: 1,
+          contentSub: 1,
+        },
+      },
+      { $limit: count },
     ]);
   },
 
@@ -66,7 +92,13 @@ module.exports = {
   },
 
   searchPostByTitle: function (keyword) {
-    return postModel.find({ title: { $regex: `${keyword}`, $options: "i" } });
+    return postModel.find({
+      $or: [
+        { title: { $regex: `${keyword}`, $options: "i" } },
+        { content: { $regex: `${keyword}`, $options: "i" } },
+        { nameTitle: { $regex: `${keyword}`, $options: "i" } },
+      ],
+    });
   },
 
   sortPostByTitle: function () {

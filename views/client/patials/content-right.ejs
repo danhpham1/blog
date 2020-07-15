@@ -1,0 +1,158 @@
+<div class="col-lg-4 col-md-12 content-right">
+  <div class="row ml-3">
+    <div class="col-lg-12 col-md-12 pr-0 pl-0">
+      <div class="search">
+        <div class="title-right">
+          search blog
+        </div>
+        <div class="contentsub-right">
+          <form action="/search" action="GET">
+            <input
+              type="text"
+              placeholder="Search..."
+              name="search"
+              id="search"
+            />
+            <button type="submit" style="border: none; background-color: #fff;">
+              <i class="fa fa-search fa-2x"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 pr-0 pl-0 mt-3">
+      <div class="popular-posts">
+        <div class="title-right">
+          popular posts
+        </div>
+        <div class="contentsub-right">
+          <div class="row">
+            <% postViews.forEach((el,indx) => { %> <% if(indx ==
+            postViews.length - 1){ %>
+            <div class="col-lg-12 col-md-12">
+              <div class="box">
+                <div class="img-contain" style="width: 140px; height: 80px;">
+                  <a href="/post/<%= el._id %> ">
+                    <img
+                      src="/img/logo/<%= el.logo %>"
+                      alt=""
+                      style="width: 140px; height: 80px;"
+                    />
+                  </a>
+                </div>
+                <div class="news-content">
+                  <a href="/post/<%= el._id %>">
+                    <p class="text-left">
+                      <%= el.title %>
+                    </p>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <% }else{ %>
+            <div class="col-lg-12 col-md-12">
+              <div class="box">
+                <div class="img-contain" style="width: 140px; height: 80px;">
+                  <a href="/post/<%= el._id %> ">
+                    <img
+                      src="/img/logo/<%= el.logo %>"
+                      alt=""
+                      style="width: 140px; height: 80px;"
+                    />
+                  </a>
+                </div>
+                <div class="news-content">
+                  <a href="/post/<%= el._id %>">
+                    <p class="text-left">
+                      <%= el.title %>
+                    </p>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <% } %> <% }); %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 pr-0 pl-0 mt-3">
+      <div class="">
+        <div class="title-right">
+          All Category
+        </div>
+        <div class="contentsub-right">
+          <ul class="category-right">
+            <% allTitle.forEach(el => { %>
+            <li>
+              <i class="fa fa-chevron-right"></i>
+              <a href="/category/<%=el.name%>" class="text-secondary">
+                <%=el.name%>
+              </a>
+            </li>
+            <% }); %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 pr-0 pl-0 mt-3">
+      <div class="last-posts">
+        <div class="title-right">
+          last posts
+        </div>
+        <div class="contentsub-right">
+          <div class="row">
+            <% postLast.forEach((el,indx) => { %> <% if(indx == postLast.length
+            - 1){ %>
+            <div class="col-lg-12 col-md-12">
+              <div class="box">
+                <div class="img-contain" style="width: 140px; height: 80px;">
+                  <a href="/post/<%=el._id%>">
+                    <img
+                      src="/img/logo/<%=el.logo%>"
+                      alt=""
+                      style="width: 140px; height: 80px;"
+                    />
+                  </a>
+                </div>
+                <div class="news-content">
+                  <a href="#">
+                    <p class="text-left">
+                      <%=el.title%>
+                    </p>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <% }else{ %>
+            <div class="col-lg-12 col-md-12">
+              <div class="box">
+                <div class="img-contain" style="width: 140px; height: 80px;">
+                  <a href="/post/<%=el._id%>">
+                    <img
+                      src="/img/logo/<%=el.logo%>"
+                      alt=""
+                      style="width: 140px; height: 80px;"
+                    />
+                  </a>
+                </div>
+                <div class="news-content">
+                  <a href="#">
+                    <p class="text-left">
+                      <%=el.title%>
+                    </p>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <% } %> <% }); %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

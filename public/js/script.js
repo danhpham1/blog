@@ -1,17 +1,15 @@
-// When the user scrolls the page, execute myFunction
-window.onscroll = function () { myFunction() };
-
-// Get the header
-var header = document.getElementById("myHeader");
-
-// Get the offset position of the navbar
-var sticky = header.offsetTop;
-
-// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function myFunction() {
-    if (window.pageYOffset > sticky) {
-        header.classList.add("header-fix");
-    } else {
-        header.classList.remove("header-fix");
+$(window).ready(function () {
+  $(".smooth-scroll").hide();
+  $(window).scroll(function () {
+    // console.log($(document).height());
+    $(".smooth-scroll").fadeIn(1000);
+    if ($(window).scrollTop() == 0) {
+      $(".smooth-scroll").fadeOut(500);
     }
-}
+  });
+
+  $("#smooth-scroll").click(function () {
+    // $(window).scrollTop(0);
+    $("html, body").animate({ scrollTop: 0 }, "slow", function () {});
+  });
+});

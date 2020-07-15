@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const passPort = require("passport");
 const localStrategy = require("passport-local").Strategy;
+const morgan = require("morgan");
 
 //require
 const routerIndex = require("./routers/admin/routerIndex");
@@ -17,6 +18,8 @@ const loginMiddleware = require("./middleware/middleware-login");
 const routerClient = require("./routers/client/routerClient");
 
 const app = express();
+
+app.use(morgan("dev"));
 
 // connecto to atlas
 mongoose.connect(
@@ -34,16 +37,22 @@ mongoose.connect(
     }
   }
 );
-//connect to local
-// mongoose.connect('mongodb://127.0.0.1:27017/blog', {
-//     useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false
-// }, function (err) {
+// connect to local
+// mongoose.connect(
+//   "mongodb://127.0.0.1:27017/blog",
+//   {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useFindAndModify: false,
+//   },
+//   function (err) {
 //     if (err) {
-//         console.log('connect to mongo faild');
+//       console.log("connect to mongo faild");
 //     } else {
-//         console.log('connect to mongo success')
+//       console.log("connect to mongo success");
 //     }
-// });
+//   }
+// );
 
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
@@ -69,8 +78,9 @@ app.use("/admin", loginMiddleware.loginMiddleware, routerIndex);
 //upload img to server user ckeditor
 app.use("/admin/ckeditor", routerUpload);
 //client
+
 app.use("/", routerClient);
 
 //check ensureAuthenticated
 
-app.listen(process.env.PORT || 3000, () => console.log("server start"));
+app.listen(3000, () => console.log("server start"));

@@ -1,164 +1,105 @@
-<section class="main-category mt-2">
-  <div class="main-category-left">
-    <div class="title">
-      <span class="text-md bg-dark">Blogs</span>
-      <hr />
-    </div>
+<div class="content-area">
+  <div class="container content">
+    <div class="row">
+      <div class="col-lg-8 col-md-12 content-left">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 pr-0 pl-0">
+            <div class="search-left">
+              <div class="title-right">
+                search blog
+              </div>
+              <div class="contentsub-right">
+                <form action="/search" action="GET">
+                  <input type="text" placeholder="Search..." name="search" id="search"/>
+                  <button
+                    type="submit"
+                    style="border: none; background-color: #fff;"
+                  >
+                    <i class="fa fa-search fa-2x"></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
 
-    <div class="main-category-left-items">
-      <% postsRandom.forEach((el,index) => { %>
-      <div class="card" style="width: 9rem;">
-        <img src="/img/logo/<%= el.logo %>" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <a href="/post/<%= el._id %>">
-            <p class="card-text">
-              <%= el.title %>
-            </p>
-          </a>
+          <% allPostsTitle.forEach((el,indx) => { %>
+            <div class="col-lg-12 col-md-12 card <% if(indx > 0){ %> <%= "mt-2" %> <% } %>">
+              <div class="card-img" >
+                <a href="/post/<%= el._id %>">
+                  <img src="/img/logo/<%= el.logo %>" alt="" style="width: 350px;height: 250px;" />
+                </a>
+              </div>
+              <div class="card-content">
+                <a href="/post/<%= el._id %>">
+                  <h5>
+                    <%= el.title %>
+                  </h5>
+                </a>
+            
+                <p class="text-secondary mb-0">
+                  by <span>Noob Boy</span>&ensp;
+                  <i class="fa fa-chevron-right"></i>
+                  &ensp;on <%= el.date %>
+                </p>
+                <p class="card-content-sub">
+                  <%= el.contentSub.substr(0,150) %>...
+                </p>
+                <a href="/post/<%= el._id %>">
+                  Continue Read <i class="fa fa-arrow-right text-success"></i>
+                </a>
+              </div>
+            </div>
+          <% }); %> 
+
+          <% if(urlActive.split("?")[0] == "search"){ %>
+            <ul class="paginations">
+              <li>
+                <a href="?search=<%=keyword%>&page=1"><i class="fa fa-fast-backward text-primary"></i></a>
+              </li>
+              <li>
+                <a href="?search=<%=keyword%>&page=<%=+currentPage - 1%>"><i
+                    class="fa fa-chevron-left text-primary"></i></a>
+              </li>
+              <% for(let i = 1; i <= allPage; i++ ){ %>
+              <li class="<% if(i == currentPage){ %> <%="active"%> <% } %>"><a
+                  href="?search=<%=keyword%>&page=<%=i%>"><%= i %> </a></li>
+              <% } %>
+              <li>
+                <a href="?search=<%=keyword%>&page=<%=+currentPage + 1%>"><i
+                    class="fa fa-chevron-right text-primary"></i></a>
+              </li>
+              <li>
+                <a href="?search=<%=keyword%>&page=<%=allPage%>"><i
+                    class="fa fa-fast-forward text-primary"></i></a>
+              </li>
+            </ul>
+          <% }else{ %>
+            <ul class="paginations">
+              <li>
+                <a href="/category/<%= urlActive.split("?")[0] %>?page=1"><i class="fa fa-fast-backward text-primary"></i></a>
+              </li>
+              <li>
+                <a href="/category/<%= urlActive.split("?")[0] %>?page=<%=+currentPage - 1%>"><i
+                    class="fa fa-chevron-left text-primary"></i></a>
+              </li>
+              <% for(let i = 1; i <= allPage; i++ ){ %>
+              <li class="<% if(i == currentPage){ %> <%="active"%> <% } %>"><a
+                  href="/category/<%= urlActive.split("?")[0] %>?page=<%=i%>"><%= i %> </a></li>
+              <% } %>
+              <li>
+                <a href="/category/<%= urlActive.split("?")[0] %>?page=<%=+currentPage + 1%>"><i
+                    class="fa fa-chevron-right text-primary"></i></a>
+              </li>
+              <li>
+                <a href="/category/<%= urlActive.split("?")[0] %>?page=<%=allPage%>"><i
+                    class="fa fa-fast-forward text-primary"></i></a>
+              </li>
+            </ul>
+          <% } %> 
+          
         </div>
       </div>
-      <% }); %>
+      <%-include("../patials/content-right")%>
     </div>
   </div>
-
-  <div class="main-category-center">
-    <div>
-      <p class="text-lg">
-        Category:<span class="text-lg text-up text-color-pink"
-          ><%=title.toUpperCase()%></span
-        >
-      </p>
-    </div>
-
-    <div class="main-category-center-items">
-      <% allPostsTitle.forEach((el,index) => { %> <% if(allPostsTitle.length - 1
-      == index){ %>
-      <div class="card mb-3" style="max-width: 540px;">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img src="/img/logo/<%= el.logo %> " class="card-img" alt="..." />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <a href="/post/<%= el._id %>">
-                <h5 class="card-title text-color-pink text-md">
-                  <%= el.title %>
-                </h5>
-                <p class="card-text text-left">
-                  <%= el.contentSub %>...
-                </p>
-                <p class="card-text text-left text-dark">
-                  by
-                  <span style="color: black;">Noob Boy</span>
-                  &ensp;&ensp;&ensp;|&ensp;&ensp;&ensp; <%= el.date %>
-                </p>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <% }else{ %>
-      <div class="card mb-3" style="max-width: 540px;">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img src="/img/logo/<%= el.logo %> " class="card-img" alt="..." />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <a href="/post/<%= el._id %>">
-                <h5 class="card-title text-color-pink text-md">
-                  <%= el.title %>
-                </h5>
-                <p class="card-text text-left">
-                  <%= el.contentSub %>...
-                </p>
-                <p class="card-text text-left text-dark">
-                  by
-                  <span style="color: black;">Noob Boy</span>
-                  &ensp;&ensp;&ensp;|&ensp;&ensp;&ensp; <%= el.date %>
-                </p>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr />
-      <% } %> <% }); %>
-
-      <nav aria-label="Page navigation example mt-3">
-        <ul class="pagination justify-content-center">
-          <ul class="pagination justify-content-center">
-            <li class="page-item">
-              <a class="page-link" href="?page=1">
-                First Page
-              </a>
-            </li>
-            <% if(currentPage > 1) { %>
-            <li class="page-item">
-              <a class="page-link" href="?page=<%=+currentPage - 1%>">
-                <i class="fa fa-angle-double-left"></i>
-              </a>
-            </li>
-            <% }%> <% for(let i = 1 ; i <= allPage ; i++) { %>
-            <li class="page-item">
-              <a class="page-link" href="/?page=<%=i%>"><%= i %></a>
-            </li>
-            <% } %> <% if(currentPage < allPage) { %>
-            <li class="page-item">
-              <a class="page-link" href="?page=<%=+currentPage + 1%>">
-                <i class="fa fa-angle-double-right"></i>
-              </a>
-            </li>
-            <% }%>
-            <li class="page-item">
-              <a class="page-link" href="?page=<%=allPage%>">Last Page</a>
-            </li>
-          </ul>
-        </ul>
-      </nav>
-    </div>
-  </div>
-
-  <div class="main-category-right">
-    <div class="title">
-      <span class="text-md bg-dark" style="width: 200px;">Most Read</span>
-      <hr />
-    </div>
-
-    <div class="main-category-right-items">
-      <% postsMostView.forEach((el,index) => { %> <% if(postsMostView.length - 1
-      == index){ %>
-      <div class="card" style="max-width: 540px;">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img src="/img/logo/<%= el.logo %> " class="card-img" alt="..." />
-          </div>
-          <div class="col-md-8">
-            <div class="card-title">
-              <a href="/post/<%= el._id %> " class="card-text">
-                <%= el.title %>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <% }else{ %>
-      <div class="card" style="max-width: 540px;">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img src="/img/logo/<%= el.logo %> " class="card-img" alt="..." />
-          </div>
-          <div class="col-md-8">
-            <div class="card-title">
-              <a href="/post/<%= el._id %> " class="card-text">
-                <%= el.title %>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr />
-      <% } %> <% }); %>
-    </div>
-  </div>
-</section>
+</div>

@@ -1,23 +1,17 @@
 const titleModel = require("../../../models/admin/title");
 const postModel = require("../../../models/admin/post");
 
-module.exports.getCategoryIndex = async (req, res) => {
+module.exports.processSearchPost = async (req, res) => {
   let main = "category/category";
   //set session redirectTo
   req.session.redirectTo = req.originalUrl;
   //get url
   let urlActive = req.originalUrl.split("/").slice(-1)[0];
+  //   console.log(urlActive.split("?"));
   // console.log(urlPost);
   // console.log(urlActive);
   //get all post with title
-  let allPostsTitle;
-  if (req.params.name == "news") {
-    allPostsTitle = (await postModel.getAllPosts()).reverse();
-  } else {
-    allPostsTitle = (
-      await postModel.getAllPostsTitle(req.params.name)
-    ).reverse();
-  }
+  let allPostsTitle = await postModel.searchPostByTitle(req.query.search);
   // console.log(titleRequest);
   //get all title
   const allTitle = await titleModel.findAllTitle();
@@ -44,5 +38,6 @@ module.exports.getCategoryIndex = async (req, res) => {
     allPage: allPage,
     allPostsTitle: allPostsTitle.splice(start, postsPerPage),
     urlActive: urlActive,
+    keyword: req.query.search,
   });
 };
