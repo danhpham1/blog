@@ -21,7 +21,7 @@ const app = express();
 
 app.use(morgan("dev"));
 
-// connecto to atlas
+//connecto to atlas
 mongoose.connect(
   "mongodb+srv://danh:hanhphucao@clusterblog-sbxju.mongodb.net/blog?retryWrites=true&w=majority",
   {
@@ -37,7 +37,7 @@ mongoose.connect(
     }
   }
 );
-// connect to local
+//connect to local
 // mongoose.connect(
 //   "mongodb://127.0.0.1:27017/blog",
 //   {

@@ -635,6 +635,14 @@ i {
 }
 
 @media (max-width: 768px) {
+  .navbar .navbar-brand {
+    font-size: 2rem;
+    margin: 0px;
+  }
+  .collapse ul {
+    margin-left: 0px !important;
+  }
+
   .smooth-scroll {
     right: 0px;
     padding: 0;
@@ -665,5 +673,14 @@ i {
   }
   .navbar .btn {
     display: none;
+  }
+}
+@media (max-width: 320px) {
+  .navbar .navbar-brand {
+    font-size: 1rem;
+    margin: 0px;
+  }
+  .collapse ul {
+    margin-left: 0px !important;
   }
 }
