@@ -653,9 +653,12 @@ i {
   }
 
   .content .content-left .card-img {
-    width: 100%;
+    width: 100% !important;
   }
-
+  .content .content-left .card-img img {
+    width: 100% !important;
+    height: 200px;
+  }
   .blog-comment .comment-content .form-comment textarea {
     width: 90% !important;
     margin-left: 10px;
