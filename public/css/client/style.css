@@ -674,7 +674,8 @@ i {
     display: block;
     margin-bottom: 10px;
   }
-  .navbar .btn {
+  .navbar .logout-lg,
+  .navbar .username {
     display: none;
   }
 }

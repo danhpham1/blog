@@ -44,5 +44,6 @@ module.exports.getCategoryIndex = async (req, res) => {
     allPage: allPage,
     allPostsTitle: allPostsTitle.splice(start, postsPerPage),
     urlActive: urlActive,
+    username: req.session.user,
   });
 };

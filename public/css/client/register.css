@@ -214,6 +214,13 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+.text-valid {
+  text-align: left !important;
+  margin-top: 5px;
+  font-size: 15px;
+  color: red !important;
+}
+
 h1 {
   font-size: 3em;
   text-align: center;

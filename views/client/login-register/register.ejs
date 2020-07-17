@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/client/register.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <title>Register</title>
   </head>
 
@@ -12,34 +14,39 @@
       <h1>Register</h1>
       <div class="main-agileinfo">
         <div class="agileits-top">
-          <form action="#" method="post">
+          <form action="/register" method="POST" id="form-register">
             <input
               class="text"
               type="text"
-              name="Username"
+              name="username"
               placeholder="Username"
-              required=""
+              id="username"
+              required
             />
+
             <input
               class="text email"
               type="email"
               name="email"
+              id="email"
               placeholder="Email"
-              required=""
+              required
             />
             <input
               class="text"
               type="password"
               name="password"
               placeholder="Password"
-              required=""
+              id="password"
+              required
             />
             <input
               class="text w3lpass"
               type="password"
               name="password"
+              id="confirm-password"
               placeholder="Confirm Password"
-              required=""
+              required
             />
             <div class="wthree-text">
               <label class="anim">
@@ -48,7 +55,7 @@
               </label>
               <div class="clear"></div>
             </div>
-            <input type="submit" value="SIGNUP" />
+            <input type="submit" value="SIGNUP" id="register" />
           </form>
           <p>Don't have an Account? <a href="/login"> Login Now!</a></p>
         </div>
@@ -74,5 +81,6 @@
         <li></li>
       </ul>
     </div>
+    <script src="/js/register.js"></script>
   </body>
 </html>

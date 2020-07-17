@@ -1,5 +1,6 @@
 const titleModel = require("../../../models/admin/title");
 const postModel = require("../../../models/admin/post");
+const Comment = require("../../../models/admin/comment");
 const mongoose = require("mongoose");
 
 module.exports.getPostIndex = async (req, res) => {
@@ -8,7 +9,10 @@ module.exports.getPostIndex = async (req, res) => {
   req.session.redirectTo = req.originalUrl;
   //get all title
   const allTitle = await titleModel.findAllTitle();
-
+  //get all comment with id post
+  const allComment = (
+    await Comment.getAllCommentWithPostId(req.params.id)
+  ).reverse();
   //get post with id
   const post = await postModel.getPostById(req.params.id);
   //update views of post
@@ -37,6 +41,7 @@ module.exports.getPostIndex = async (req, res) => {
     postLast: postLast,
     post: post,
     postRelate: postRelate.splice(0, 4),
-    username: req.session.passport,
+    username: req.session.user,
+    allComment: allComment,
   });
 };

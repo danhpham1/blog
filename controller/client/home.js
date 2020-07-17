@@ -28,6 +28,7 @@ module.exports.getHome = async (req, res) => {
   const postLast = (await postModel.getAllPosts()).reverse().splice(0, 4);
   // get title
   const allTitle = await titleModel.findAllTitle();
+  console.log(req.session.user);
 
   res.render("client/index", {
     main: main,
@@ -42,5 +43,6 @@ module.exports.getHome = async (req, res) => {
     postLast: postLast,
     allTitle: allTitle,
     urlActive: urlActive,
+    username: req.session.user,
   });
 };

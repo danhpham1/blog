@@ -70,56 +70,45 @@
               </div>
               <div class="comment-content">
                 <%if (username){ %>
-                <div>
+                <div class="parent-comment" id="parent-comment">
+                  <% allComment.forEach(el => { %> <% if(el.status == true){ %>
                   <div class="comment">
                     <div class="comment-title">
-                      <p>Admin</p>
-                      <p>7/9/2020 9:48AM</p>
+                      <p><%=el.username%></p>
+                      <p>
+                        <%=el.date.toISOString().split("T")[0]%> <%=el.time%>
+                      </p>
                     </div>
                     <div class="comment-sub">
                       <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Reiciendis, magnam?Lorem ipsum dolor sit, amet
-                        consectetur adipisicing elit. Libero, a. Lorem ipsum
-                        dolor sit, amet consectetur adipisicing elit. A, natus.
+                        <%=el.comment%>
                       </p>
                     </div>
                   </div>
-                  <div class="comment">
-                    <div class="comment-title">
-                      <p>Admin</p>
-                      <p>7/9/2020 9:48AM</p>
-                    </div>
-                    <div class="comment-sub">
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Reiciendis, magnam?
-                      </p>
-                    </div>
-                  </div>
-                  <div class="comment">
-                    <div class="comment-title">
-                      <p>Admin</p>
-                      <p>7/9/2020 9:48AM</p>
-                    </div>
-                    <div class="comment-sub">
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Reiciendis, magnam?
-                      </p>
-                    </div>
-                  </div>
-                  <form action="" class="form-comment">
-                    <textarea
-                      name=""
-                      id=""
-                      cols="70"
-                      rows="4"
-                      placeholder="Enter your comment....."
-                    ></textarea>
-                    <button>Comment</button>
-                  </form>
+                  <% } %> <% }); %>
                 </div>
+                <form action="" class="form-comment" id="form-comment">
+                  <textarea
+                    name="comment-content"
+                    id="comment-content"
+                    cols="70"
+                    rows="4"
+                    placeholder="Enter your comment....."
+                  ></textarea>
+                  <input
+                    type="hidden"
+                    name=""
+                    id="id-post"
+                    value="<%=post._id%>"
+                  />
+                  <input
+                    type="hidden"
+                    name=""
+                    id="username"
+                    value="<%=username.username%>"
+                  />
+                  <button type="submit">Comment</button>
+                </form>
                 <% }else{ %>
                 <div class="comment-login">
                   <a href="/login" class="text-success"

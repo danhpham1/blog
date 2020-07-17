@@ -16,6 +16,8 @@ const registerController = require("../../controller/client/register/register");
 
 const searController = require("../../controller/client/sreach/search");
 
+const commentController = require("../../controller/client/comment/comment");
+
 //get home index
 routerClient.get("", homeController.getHome);
 
@@ -32,7 +34,14 @@ routerClient.get("/search", searController.processSearchPost);
 routerClient.get("/login", loginController.getIndexLogin);
 routerClient.post("/login", loginController.processPostLogin);
 
+//process logout
+routerClient.get("/logout", loginController.processLogout);
+
+//process comment
+routerClient.post("/comment", commentController.processCommentPost);
+
 //get index register
 routerClient.get("/register", registerController.getIndexRegister);
+routerClient.post("/register", registerController.processPostRegister);
 
 module.exports = routerClient;

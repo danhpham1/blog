@@ -1,6 +1,9 @@
 <nav class="navbar navbar-expand-md">
   <a class="navbar-brand text-white font-weight-bold" href="/">Noob Boy</a>
   <div>
+    <% if(username){ %>
+    <span class="toggle-icon text-white font-weight-bold d-sm-inline d-md-none"><%= username.username %> </span>
+    <% } %>
     <button
       class="navbar-toggler"
       type="button"
@@ -12,9 +15,11 @@
     >
       <span class="toggle-icon"><i class="fa fa-bars"></i></span>
     </button>
-    <a href="/login" class="navbar-toggler text-white">
-      Login
-    </a>
+    <% if(!username){ %>
+      <a href="/login" class="navbar-toggler text-white">
+        Sign In
+      </a>
+    <% } %> 
   </div>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -29,9 +34,25 @@
         >
       </li>
       <% }); %>
+      <% if(username){ %>
+        <li class="nav-item d-lg-none d-md-none d-sm-inline">
+          <a class="nav-link text-white sigon-out-hide" href="/logout">Sign out</a>
+        </li>
+      <% } %> 
     </ul>
   </div>
-  <a class="btn btn-outline-light my-2 my-lg-0 mr-3" href="/login">
-    Login
-  </a>
+
+  <% if(username){ %>
+    <div class="username">
+      <span class="text-white"><b><%= username.username %></b></span>
+      <a class="btn btn-outline-light my-2 my-lg-0 mr-3" href="/logout">
+        Sign Out
+      </a>
+    </div>
+  <% }else{ %>
+    <a class="logout-lg btn btn-outline-light my-2 my-lg-0 mr-3" href="/login">
+      Sign In
+    </a>
+  <% } %>
+  
 </nav>
