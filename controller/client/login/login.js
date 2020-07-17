@@ -1,5 +1,5 @@
 const User = require("../../../models/admin/user");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 module.exports.getIndexLogin = (req, res) => {
   res.render("client/login-register/login");
