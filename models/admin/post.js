@@ -20,8 +20,17 @@ module.exports = {
     return post.save();
   },
 
-  getAllPosts: function () {
-    return postModel.find();
+  getAllPosts: function (count) {
+    if (!count) {
+      return postModel.aggregate([
+        { $project: { _id: 1, logo: 1, title: 1, date: 1, views: 1, contentSub: 1, nameTitle: 1 } }
+      ]);
+    } else {
+      return postModel.aggregate([
+        { $project: { _id: 1, logo: 1, title: 1, date: 1, views: 1, contentSub: 1, nameTitle: 1 } },
+        { $limit: count }
+      ])
+    }
   },
 
   getPostNews: function (count) {
@@ -58,29 +67,55 @@ module.exports = {
   },
 
   getPostTitle: function (title, count) {
-    return postModel.aggregate([
-      { $match: { nameTitle: `${title}` } },
-      { $sort: { date: -1 } },
-      {
-        $project: {
-          _id: 1,
-          title: 1,
-          date: 1,
-          views: 1,
-          logo: 1,
-          contentSub: 1,
+    if (count) {
+      return postModel.aggregate([
+        { $match: { nameTitle: `${title}` } },
+        { $sort: { date: -1 } },
+        {
+          $project: {
+            _id: 1,
+            title: 1,
+            date: 1,
+            views: 1,
+            logo: 1,
+            contentSub: 1,
+          },
         },
-      },
-      { $limit: count },
-    ]);
+        { $limit: count },
+      ]);
+    } else {
+      return postModel.aggregate([
+        { $match: { nameTitle: `${title}` } },
+        { $sort: { date: -1 } },
+        {
+          $project: {
+            _id: 1,
+            title: 1,
+            date: 1,
+            views: 1,
+            logo: 1,
+            contentSub: 1,
+          },
+        },
+      ]);
+    }
+
   },
 
   getPostViews: function (count) {
-    return postModel.aggregate([
-      { $sort: { views: -1 } },
-      { $project: { _id: 1, title: 1, logo: 1 } },
-      { $limit: count },
-    ]);
+    if (count) {
+      return postModel.aggregate([
+        { $sort: { views: -1 } },
+        { $project: { _id: 1, title: 1, logo: 1 } },
+        { $limit: count },
+      ]);
+    } else {
+      return postModel.aggregate([
+        { $sort: { views: -1 } },
+        { $project: { _id: 1, title: 1, logo: 1 } },
+      ]);
+    }
+
   },
 
   updatePostById: function (id, value) {
